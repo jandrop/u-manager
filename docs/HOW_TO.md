@@ -161,7 +161,12 @@ The easiest way to install on Unraid is using the Docker templates:
    - Configure and apply
    - Repeat for **file_core_ui** template (optional but recommended)
 
-4. **Default Ports**:
+4. **Docker Network** (Important):
+   - Both containers **must be on the same Docker network** to communicate
+   - By default, use `bridge` or create a custom network
+   - In Unraid, set the same "Network Type" for both containers
+
+5. **Default Ports**:
    - Web UI: `8764`
    - API: `8000`
 
@@ -178,6 +183,7 @@ The easiest way to install on Unraid is using the Docker templates:
 
 - **"File browser is not configured"**: Set the port in Settings
 - **Cannot connect**: Verify the Docker containers are running in the Unraid Docker tab
+- **UI can't reach API**: Ensure both containers are on the same Docker network
 - **Permission errors**: Check PUID/PGID settings in the container config (typically `99` and `100` for Unraid)
 
 For detailed setup and configuration, visit:
