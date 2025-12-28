@@ -1,5 +1,14 @@
-
 # U-Manager - How To Guide
+
+## Table of Contents
+
+- [Creating an API Key](#creating-an-api-key)
+- [Troubleshooting](#troubleshooting)
+- [Connection Settings](#connection-settings)
+- [File Browser Setup](#file-browser-setup)
+- [Additional Resources](#additional-resources)
+
+---
 
 ## Creating an API Key
 
@@ -80,6 +89,56 @@ If after restarting the API the problem persists, and you've verified it's not a
 
 Enter your Unraid server's IP address or hostname:
 - Example: `http://192.168.1.100` or `https://192.168.1.100`
+
+---
+
+## File Browser Setup
+
+U-Manager can browse files on your Unraid server using the **File Core API** plugin.
+
+### What is File Core API?
+
+File Core API is a lightweight file manager that runs as Docker containers on your Unraid server. It provides a web interface and API for browsing, downloading, and managing files.
+
+### Installation (Recommended: Unraid Templates)
+
+The easiest way to install on Unraid is using the Docker templates:
+
+1. **Download the templates** from:
+   - [File Core API Repository](https://github.com/jandrop/file_core_api_unraid)
+
+2. **Copy the XML templates** to your Unraid templates directory:
+   ```
+   /boot/config/plugins/dockerMan/templates-user/
+   ```
+
+3. **Install from Unraid Docker tab**:
+   - Go to **Docker → Add Container**
+   - Select **file_core_api** template
+   - Configure and apply
+   - Repeat for **file_core_ui** template (optional but recommended)
+
+4. **Default Ports**:
+   - Web UI: `8764`
+   - API: `8000`
+
+> **Note**: Using Unraid templates is preferred over Docker Compose as it integrates better with Unraid's container management.
+
+### Configure in U-Manager
+
+1. Open U-Manager and go to **Settings**
+2. Find the **File Browser** section
+3. Enter the **Port** (default: `8764`)
+4. Tap on any Share to browse its files
+
+### Troubleshooting
+
+- **"File browser is not configured"**: Set the port in Settings
+- **Cannot connect**: Verify the Docker containers are running in the Unraid Docker tab
+- **Permission errors**: Check PUID/PGID settings in the container config (typically `99` and `100` for Unraid)
+
+For detailed setup and configuration, visit:
+- [File Core API Documentation](https://github.com/jandrop/file_core_api_unraid/blob/main/README.md)
 
 ---
 
