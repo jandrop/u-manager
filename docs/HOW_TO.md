@@ -5,6 +5,7 @@
 - [Creating an API Key](#creating-an-api-key)
 - [Troubleshooting](#troubleshooting)
 - [Connection Settings](#connection-settings)
+- [Custom Headers (Reverse Proxy)](#custom-headers-reverse-proxy)
 - [File Browser Setup](#file-browser-setup)
 - [Additional Resources](#additional-resources)
 
@@ -89,6 +90,48 @@ If after restarting the API the problem persists, and you've verified it's not a
 
 Enter your Unraid server's IP address or hostname:
 - Example: `http://192.168.1.100` or `https://192.168.1.100`
+
+---
+
+## Custom Headers (Reverse Proxy)
+
+If you access your Unraid server through a reverse proxy with authentication (like Cloudflare Access, Authelia, or Authentik), you may need to add custom headers to authenticate with the proxy.
+
+### When Do You Need Custom Headers?
+
+- **Cloudflare Access**: Requires `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers
+- **Other reverse proxies**: May require custom authentication headers
+
+### Adding Custom Headers
+
+1. On the login screen, tap **Custom Headers** to expand the section
+2. Choose a header type:
+   - **Cloudflare Client ID**: Pre-fills the `CF-Access-Client-Id` key
+   - **Cloudflare Secret**: Pre-fills the `CF-Access-Client-Secret` key
+   - **Custom**: Enter any custom header key
+3. Enter the header value
+4. Tap **Add** to add the header
+5. Repeat for additional headers if needed
+6. Complete the login with your server URL and API key
+
+### Cloudflare Access Setup
+
+To use Cloudflare Access with U-Manager:
+
+1. In Cloudflare Zero Trust dashboard, go to **Access → Service Auth**
+2. Create a new **Service Token**
+3. Copy the **Client ID** and **Client Secret**
+4. In U-Manager:
+   - Add a **Cloudflare Client ID** header with the Client ID value
+   - Add a **Cloudflare Secret** header with the Client Secret value
+
+> **Security Note**: Custom headers are stored securely on your device alongside your API key.
+
+### Troubleshooting
+
+- **401 Unauthorized**: Check that your header values are correct
+- **403 Forbidden**: Verify your service token has the correct permissions in Cloudflare
+- **Connection timeout**: Ensure your reverse proxy is correctly forwarding requests to Unraid
 
 ---
 
