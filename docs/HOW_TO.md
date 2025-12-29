@@ -159,7 +159,7 @@ The easiest way to install on Unraid is using the Docker templates:
    - Go to **Docker → Add Container**
    - Select **file_core_api** template
    - Configure and apply
-   - Repeat for **file_core_ui** template (optional but recommended)
+   - Repeat for **file_core_ui** template
 
 4. **Docker Network** (Important):
    - Both containers **must be on the same Docker network** to communicate
