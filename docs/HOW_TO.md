@@ -8,6 +8,7 @@
 - [Custom Headers (Reverse Proxy)](#custom-headers-reverse-proxy)
 - [File Browser Setup](#file-browser-setup)
 - [Additional Resources](#additional-resources)
+- [Discord server](#discord-server)
 
 ---
 
@@ -194,3 +195,9 @@ For detailed setup and configuration, visit:
 ## Additional Resources
 
 - [Unraid API Documentation](https://docs.unraid.net/API/how-to-use-the-api)
+
+## Discord Server
+
+You can join this Discord server if you need more help: https://discord.gg/zfwWug8m
+
+
