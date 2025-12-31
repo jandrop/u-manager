@@ -25,3 +25,5 @@ Before reporting, please include:
 ---
 
 **Developer:** [@jandrop](https://github.com/jandrop)
+
+Discord server for help https://discord.gg/zfwWug8m
