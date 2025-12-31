@@ -2,12 +2,8 @@
 
 Mobile app for managing and monitoring your Unraid server.
 
-## Download (Alpha)
-
-The app is currently in alpha testing. To get access:
-
-1. Join the [U-Manager testers group](https://groups.google.com/g/u-manager)
-2. Download from [Google Play (Alpha)](https://play.google.com/apps/testing/es.atrapandocucarachas.umanager)
+## Download
+Download from [Google Play (Beta)](https://play.google.com/store/apps/details?id=es.atrapandocucarachas.umanager)
 
 ## Support
 
