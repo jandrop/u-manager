@@ -3,7 +3,7 @@
 Mobile app for managing and monitoring your Unraid server.
 
 ## Download
-Download from [Google Play (Beta)](https://play.google.com/store/apps/details?id=es.atrapandocucarachas.umanager)
+Download from [Google Play](https://play.google.com/store/apps/details?id=es.atrapandocucarachas.umanager)
 
 ## Support
 
