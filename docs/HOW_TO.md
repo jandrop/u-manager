@@ -198,6 +198,6 @@ For detailed setup and configuration, visit:
 
 ## Discord Server
 
-You can join this Discord server if you need more help: https://discord.gg/zfwWug8m
+You can join this Discord server if you need more help: https://discord.gg/N7fxabZzXN
 
 
