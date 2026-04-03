@@ -16,7 +16,7 @@ Before reporting, please include:
 
 ## Requirements
 
-- Unraid 6.12+ with [API enabled](https://docs.unraid.net/API/)
+- Unraid 6.12+ with [API enabled](https://docs.unraid.net/API/) - **NO UNRAID BETA SUPPORTED**
 
 ---
 
