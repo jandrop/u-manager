@@ -144,12 +144,21 @@ U-Manager can browse files on your Unraid server using the **File Core API** plu
 
 File Core API is a lightweight file manager that runs as Docker containers on your Unraid server. It provides a web interface and API for browsing, downloading, and managing files.
 
-### Installation (Recommended: Unraid Templates)
+### Installation (Recommended: Community Apps)
 
-The easiest way to install on Unraid is using the Docker templates:
+The easiest way to install on Unraid is through the **Community Apps** store:
+
+1. Open your Unraid WebGUI and go to the **Apps** tab.
+2. Search for **"FileManagerAPI"** and install it (provides the backend API).
+3. Optionally, search for **"FileManagerUI"** and install it too (provides the web interface).
+4. Once installed, ensure the containers are running in the **Docker** tab.
+
+### Manual Installation (Advanced)
+
+If you prefer manual installation, you can use the Docker templates:
 
 1. **Download the templates** from:
-   - [File Core API Repository](https://github.com/jandrop/file_core_api_unraid)
+   - [File Manager API Repository](https://github.com/jandrop/file_core_api_unraid)
 
 2. **Copy the XML templates** to your Unraid templates directory:
    ```
@@ -158,9 +167,8 @@ The easiest way to install on Unraid is using the Docker templates:
 
 3. **Install from Unraid Docker tab**:
    - Go to **Docker → Add Container**
-   - Select **file_core_api** template
-   - Configure and apply
-   - Repeat for **file_core_ui** template
+   - Select **file_manager_api** template (previously named file_core_api)
+   - Configure and apply.
 
 4. **Docker Network** (Important):
    - Both containers **must be on the same Docker network** to communicate
