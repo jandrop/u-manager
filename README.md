@@ -22,4 +22,4 @@ Before reporting, please include:
 
 **Developer:** [@jandrop](https://github.com/jandrop)
 
-Discord server for help https://discord.gg/zfwWug8m
+Discord server for help [https://discord.gg/zfwWug8m](https://discord.gg/N7fxabZzXN)
