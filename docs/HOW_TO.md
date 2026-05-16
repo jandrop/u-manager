@@ -7,6 +7,8 @@
 - [Connection Settings](#connection-settings)
 - [Custom Headers (Reverse Proxy)](#custom-headers-reverse-proxy)
 - [File Browser Setup](#file-browser-setup)
+- [Push Notifications Setup](#push-notifications-setup)
+- [Companion Plugin (Optional)](#companion-plugin-optional)
 - [Additional Resources](#additional-resources)
 - [Discord server](#discord-server)
 
@@ -200,12 +202,82 @@ For detailed setup and configuration, visit:
 
 ---
 
+## Push Notifications Setup
+
+U-Manager can deliver Unraid notifications to your phone using the **U-Manager Notifications** plugin.
+
+### Step 1: Install the plugin in Unraid
+
+1. Open your Unraid WebGUI and go to **Plugins** → **Install Plugin**.
+2. In the field labelled **"Enter URL of remote plugin file or local plugin file"**, paste this URL:
+   ```
+   https://raw.githubusercontent.com/jandrop/u-manager-unraid-plugin/main/UManager.plg
+   ```
+3. Click **INSTALL** and wait for the plugin to finish installing.
+
+![Install Plugin screen in Unraid](https://raw.githubusercontent.com/jandrop/u-manager-unraid-plugin/main/docs/screenshots/install-plugin.png)
+
+> Plugin source: [github.com/jandrop/u-manager-unraid-plugin](https://github.com/jandrop/u-manager-unraid-plugin)
+
+### Step 2: Get your push token in U-Manager
+
+1. Open U-Manager and go to **Settings** → **Notifications**.
+2. Enable the **Push notifications** toggle.
+3. Copy the token shown below the toggle.
+
+### Step 3: Configure the plugin in Unraid
+
+1. In Unraid, go to **Settings** → **Notification Settings**.
+2. Scroll to the bottom — you will see a **UManager** section with these fields:
+   - **Agent function**: set to `Enabled`.
+   - **Push token**: paste the token you copied from U-Manager.
+   - **Notification title**: leave as `Subject`.
+   - **Notification message**: leave as `Description`.
+3. Click **APPLY**.
+4. Click **TEST** to send a test notification — it should arrive on your phone within a few seconds.
+
+![UManager agent settings in Unraid Notification Settings](https://raw.githubusercontent.com/jandrop/u-manager-unraid-plugin/main/docs/screenshots/plugin-settings.png)
+
+### Important notes
+
+- **Token is regenerated when you toggle off and on.** If you turn push notifications OFF in U-Manager and turn them back ON, a new token is issued and the old one stops working. You must paste the new token into the plugin again.
+- **Only one device at a time.** A given token only delivers to one phone. If you set up the same token on a second phone, the first phone stops receiving notifications. To use a different phone, regenerate the token there and update the plugin with it.
+
+---
+
+## Companion Plugin (Optional)
+
+U-Manager talks to the official Unraid GraphQL API. A few features depend on fixes that haven't reached upstream yet — the **U-Manager Companion** Unraid plugin patches your local `unraid-api` so those features work today. Without the plugin the app still works; the affected sections just stay dark or fall back to safe defaults.
+
+### What it enables
+
+- **Live network speed monitoring** — real upload/download speed per network interface in the dashboard.
+- **Real-time Docker container stats** — CPU%, memory and network/block I/O update every second. The official API caches the first sample and never refreshes it.
+- **Reliable live updates over subscriptions** — fixes an `auth.service` error that broke WebSocket subscriptions for API-key clients (which is how U-Manager connects).
+
+### Install
+
+1. Open your Unraid WebGUI → **Plugins** → **Install Plugin**.
+2. Paste this URL:
+   ```
+   https://raw.githubusercontent.com/jandrop/u-manager-companion/main/UManagerCompanion.plg
+   ```
+3. Click **INSTALL**. The plugin re-applies its patches at every boot, so you only install it once.
+
+> Plugin source, technical details and the upstream tracking issues: [github.com/jandrop/u-manager-companion](https://github.com/jandrop/u-manager-companion)
+
+### Remove
+
+In Unraid: **Plugins** → **u-manager-companion** → **Remove**. The patches stay live until the next reboot; after that, the pristine API bundle is loaded from squashfs.
+
+---
+
 ## Additional Resources
 
 - [Unraid API Documentation](https://docs.unraid.net/API/how-to-use-the-api)
 
+---
+
 ## Discord Server
 
 You can join this Discord server if you need more help: https://discord.gg/N7fxabZzXN
-
-
