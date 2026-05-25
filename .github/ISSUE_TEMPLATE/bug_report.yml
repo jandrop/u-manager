@@ -1,0 +1,84 @@
+name: Bug report
+description: Report a problem with the U Manager app
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill in the fields below — the more
+        complete the report, the faster the fix.
+  - type: checkboxes
+    attributes:
+      label: Pre-flight checklist
+      options:
+        - label: I have searched the [open issues](https://github.com/jandrop/u-manager/issues) and didn't find a duplicate.
+          required: true
+        - label: I'm on the latest version of the app from Google Play or the App Store.
+          required: true
+        - label: This issue is about U Manager only. I have not added links to competing products or any other promotional content. The issue tracker is not the place for that.
+          required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Settings → About — the version is at the bottom (e.g. `1.2.1`).
+      placeholder: "1.2.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android
+        - iOS
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and OS version
+      description: Phone model + Android / iOS version.
+      placeholder: "Pixel 8 — Android 14"
+    validations:
+      required: true
+  - type: input
+    id: unraid-version
+    attributes:
+      label: Unraid version
+      description: Top-right of the Unraid web UI, or Tools → System Info.
+      placeholder: "7.0.1"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app
+        2. Go to ...
+        3. Tap ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / recordings
+      description: Drag images or video here. Optional but very helpful.
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Logs, network setup, container template, anything else relevant.
