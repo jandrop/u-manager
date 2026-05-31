@@ -251,9 +251,10 @@ U-Manager talks to the official Unraid GraphQL API. A few features depend on fix
 
 ### What it enables
 
-- **Live network speed monitoring** — real upload/download speed per network interface in the dashboard.
-- **Real-time Docker container stats** — CPU%, memory and network/block I/O update every second. The official API caches the first sample and never refreshes it.
-- **Reliable live updates over subscriptions** — fixes an `auth.service` error that broke WebSocket subscriptions for API-key clients (which is how U-Manager connects).
+- **Parity check resume**: lets you resume a paused parity check from the app. The official API doesn't expose this.
+- **Disks stay spun down**: stops idle disks from waking up while the app is open in the background.
+
+The other patches the companion installs are infrastructure for upcoming app features and don't change anything visible today.
 
 ### Install
 
