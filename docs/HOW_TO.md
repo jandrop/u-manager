@@ -93,14 +93,7 @@ This is not an in-app setting. Until the fix reaches the official API, you can f
 
 > Make sure your Unraid API is on the latest stable version first, otherwise the companion may not patch correctly. See [Before You Start: Keep the Unraid API Updated](#before-you-start-keep-the-unraid-api-updated).
 
-1. Open your Unraid WebGUI, go to **Plugins**, then **Install Plugin**.
-2. Paste this URL:
-   ```
-   https://raw.githubusercontent.com/jandrop/u-manager-companion/main/UManagerCompanion.plg
-   ```
-3. Click **INSTALL**. You only install it once, the plugin re-applies its patches at every boot.
-
-> Plugin source and technical details: [github.com/jandrop/u-manager-companion](https://github.com/jandrop/u-manager-companion)
+To install it, follow the steps in [Companion Plugin (Optional)](#companion-plugin-optional).
 
 ### Known Unraid API Issues
 
@@ -288,7 +281,7 @@ U-Manager talks to the official Unraid GraphQL API. A few features depend on fix
 ### What it enables
 
 - **Parity check resume**: lets you resume a paused parity check from the app. The official API doesn't expose this.
-- **Disks stay spun down**: stops idle disks from waking up while the app is open in the background.
+- **Disks stay spun down**: works around an Unraid API bug ([unraid/api#2018](https://github.com/unraid/api/issues/2018)) that wakes idle disks whenever the app reads disk info. See [Disks Wake Up When Opening the App](#disks-wake-up-when-opening-the-app).
 
 The other patches the companion installs are infrastructure for upcoming app features and don't change anything visible today.
 
