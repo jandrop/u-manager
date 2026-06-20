@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Before You Start: Keep the Unraid API Updated](#before-you-start-keep-the-unraid-api-updated)
 - [Creating an API Key](#creating-an-api-key)
 - [Troubleshooting](#troubleshooting)
 - [Connection Settings](#connection-settings)
@@ -11,6 +12,22 @@
 - [Companion Plugin (Optional)](#companion-plugin-optional)
 - [Additional Resources](#additional-resources)
 - [Discord server](#discord-server)
+
+---
+
+## Before You Start: Keep the Unraid API Updated
+
+> **This is the single most important thing for using U-Manager.** Keep your Unraid API on the latest stable version.
+
+U-Manager talks to the GraphQL API that ships with Unraid. Older API versions have bugs and missing fields that make parts of the app misbehave, and the **U-Manager Companion** plugin also needs a recent API to apply its patches correctly.
+
+The easiest way to keep the API up to date is the official **Unraid Connect** plugin, which updates the Unraid API to the latest stable version for you:
+
+1. Open your Unraid WebGUI and go to the **Apps** tab (Community Apps).
+2. Search for **Unraid Connect** and install it.
+3. Once installed, it keeps your Unraid API updated to the latest stable release.
+
+> You do not need to sign in to an Unraid Connect account to benefit from the updated API. Installing the plugin is enough to get the latest API version.
 
 ---
 
@@ -65,6 +82,25 @@ In many cases, API key or connection issues are resolved by restarting the Unrai
 6. Try using U-Manager again
 
 If the problem is resolved after restarting the API, the issue was most likely related to the Unraid API and not the app itself.
+
+### Disks Wake Up When Opening the App
+
+This is a bug in the Unraid API itself, not in U-Manager. When the app reads disk information, the official `unraid-api` runs a full SMART read (`smartctl --xall`) on every disk without the `-n standby` flag, which forces idle drives to spin up and leave standby. The app only asked for disk identifiers, but the API wakes the platters anyway.
+
+It is being tracked upstream here: [unraid/api#2018](https://github.com/unraid/api/issues/2018).
+
+This is not an in-app setting. Until the fix reaches the official API, you can fix it on the server side today by installing the **U-Manager Companion** plugin, which patches your local Unraid API so disk reads no longer wake spun-down disks while the app is open. The companion reads disk identity from the system and only consults SMART for drives that are already spinning, matching what Unraid's own web UI does.
+
+> Make sure your Unraid API is on the latest stable version first, otherwise the companion may not patch correctly. See [Before You Start: Keep the Unraid API Updated](#before-you-start-keep-the-unraid-api-updated).
+
+1. Open your Unraid WebGUI, go to **Plugins**, then **Install Plugin**.
+2. Paste this URL:
+   ```
+   https://raw.githubusercontent.com/jandrop/u-manager-companion/main/UManagerCompanion.plg
+   ```
+3. Click **INSTALL**. You only install it once, the plugin re-applies its patches at every boot.
+
+> Plugin source and technical details: [github.com/jandrop/u-manager-companion](https://github.com/jandrop/u-manager-companion)
 
 ### Known Unraid API Issues
 
