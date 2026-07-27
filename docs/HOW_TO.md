@@ -169,65 +169,26 @@ To use Cloudflare Access with U-Manager:
 
 ## File Browser Setup
 
-U-Manager can browse files on your Unraid server using the **File Core API** plugin.
+U-Manager can browse files on your Unraid server using the **U-Manager Files** plugin — a native file browser that installs from Community Applications and runs on your server's port `8740`, authenticated with your Unraid API key.
 
-### What is File Core API?
+### Install
 
-File Core API is a lightweight file manager that runs as Docker containers on your Unraid server. It provides a web interface and API for browsing, downloading, and managing files.
+In the Unraid WebGUI, open **Plugins → Install Plugin** and paste:
 
-### Installation (Recommended: Community Apps)
+```
+https://github.com/jandrop/u-manager-files-releases/releases/latest/download/UManagerFiles.plg
+```
 
-The easiest way to install on Unraid is through the **Community Apps** store:
+Click **INSTALL**. The plugin starts on port `8740` with `/mnt/user` as the exposed root.
 
-1. Open your Unraid WebGUI and go to the **Apps** tab.
-2. Search for **"FileManagerAPI"** and install it (provides the backend API).
-3. Optionally, search for **"FileManagerUI"** and install it too (provides the web interface).
-4. Once installed, ensure the containers are running in the **Docker** tab.
+### Configure in the app
 
-### Manual Installation (Advanced)
-
-If you prefer manual installation, you can use the Docker templates:
-
-1. **Download the templates** from:
-   - [File Manager API Repository](https://github.com/jandrop/file_core_api_unraid)
-
-2. **Copy the XML templates** to your Unraid templates directory:
-   ```
-   /boot/config/plugins/dockerMan/templates-user/
-   ```
-
-3. **Install from Unraid Docker tab**:
-   - Go to **Docker → Add Container**
-   - Select **file_manager_api** template (previously named file_core_api)
-   - Configure and apply.
-
-4. **Docker Network** (Important):
-   - Both containers **must be on the same Docker network** to communicate
-   - By default, use `bridge` or create a custom network
-   - In Unraid, set the same "Network Type" for both containers
-
-5. **Default Ports**:
-   - Web UI: `8764`
-   - API: `8000`
-
-> **Note**: Using Unraid templates is preferred over Docker Compose as it integrates better with Unraid's container management.
-
-### Configure in U-Manager
-
-1. Open U-Manager and go to **Settings**
-2. Find the **File Browser** section
-3. Enter the **Port** (default: `8764`)
-4. Tap on any Share to browse its files
+Open the **File Browser settings** in U-Manager and tap the **?** in the top bar for the full setup guide. In short: the host and port (`8740`) point at your server, and under **Authentication** you paste an Unraid API key — it's recommended to create a new, dedicated key (**Settings → Management Access → API Keys → Create API Key**) so you can revoke just this access later.
 
 ### Troubleshooting
 
-- **"File browser is not configured"**: Set the port in Settings
-- **Cannot connect**: Verify the Docker containers are running in the Unraid Docker tab
-- **UI can't reach API**: Ensure both containers are on the same Docker network
-- **Permission errors**: Check PUID/PGID settings in the container config (typically `99` and `100` for Unraid)
-
-For detailed setup and configuration, visit:
-- [File Core API Documentation](https://github.com/jandrop/file_core_api_unraid/blob/main/README.md)
+- **"File browser is not configured"** — set it up in File Browser settings.
+- **Cannot connect** — confirm the U-Manager Files plugin is installed and running on the server (port `8740`).
 
 ---
 
