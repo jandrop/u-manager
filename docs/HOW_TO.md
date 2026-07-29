@@ -183,7 +183,7 @@ Click **INSTALL**. The plugin starts on port `8740` with `/mnt/user` as the expo
 
 ### Configure in the app
 
-Open the **File Browser settings** in U-Manager and tap the **?** in the top bar for the full setup guide. In short: the host and port (`8740`) point at your server, and under **Authentication** you paste an Unraid API key — it's recommended to create a new, dedicated key (**Settings → Management Access → API Keys → Create API Key**) so you can revoke just this access later.
+Open the **File Browser settings** in U-Manager and tap the **?** in the top bar for the full setup guide. In short: the host and port (`8740`) point at your server, and under **Authentication** you paste an Unraid API key to use the SSO same authentication as unraid does — it's recommended to create a new, dedicated key (**Settings → Management Access → API Keys → Create API Key**) so you can revoke just this access later.
 
 ### Troubleshooting
 
