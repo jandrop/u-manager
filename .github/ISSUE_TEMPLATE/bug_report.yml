@@ -13,6 +13,8 @@ body:
       options:
         - label: I have searched the [open issues](https://github.com/jandrop/u-manager/issues) and didn't find a duplicate.
           required: true
+        - label: I have read the [U-Manager documentation](https://github.com/jandrop/u-manager/blob/main/docs/HOW_TO.md) and my problem isn't covered there.
+          required: true
         - label: I'm on the latest version of the app from Google Play or the App Store.
           required: true
         - label: I have the latest version of the U-Manager Companion and Unraid Connect plugins installed (Unraid web UI → Apps).
@@ -20,6 +22,8 @@ body:
         - label: I've tested with a direct LAN connection — no reverse proxy, no VPN — and the bug still happens.
           required: true
         - label: I've restarted the Unraid API (Unraid web UI → Settings → Management Access → Unraid API Status → RESTART API) and the bug still happens.
+          required: true
+        - label: I'm using an API key with admin permissions (Unraid web UI → Settings → Management Access → API Keys).
           required: true
         - label: This issue is about U Manager only. I have not added links to competing products or any other promotional content. The issue tracker is not the place for that.
           required: true
