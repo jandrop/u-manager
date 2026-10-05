@@ -95,6 +95,12 @@ This is not an in-app setting. Until the fix reaches the official API, you can f
 
 To install it, follow the steps in [Companion Plugin (Optional)](#companion-plugin-optional).
 
+### The App Stays on "Restarting…"
+
+After a restart from the app, U-Manager waits until the server answers again before going back to the dashboard. A server with many disks can take several minutes to boot.
+
+If you reach your server through a reverse proxy or tunnel that runs as a Docker container on the same server (for example Cloudflare Tunnel), the app can only reconnect once the array and Docker have started, so it takes longer.
+
 ### Known Unraid API Issues
 
 Before reporting a bug, check if your issue is a known problem with the Unraid API:
@@ -243,6 +249,7 @@ U-Manager talks to the official Unraid GraphQL API. A few features depend on fix
 
 - **Parity check resume**: lets you resume a paused parity check from the app. The official API doesn't expose this.
 - **Disks stay spun down**: works around an Unraid API bug ([unraid/api#2018](https://github.com/unraid/api/issues/2018)) that wakes idle disks whenever the app reads disk info. See [Disks Wake Up When Opening the App](#disks-wake-up-when-opening-the-app).
+- **Restart and shut down the server**: tap the power button (⏻) on the dashboard's server card. The button only appears when the companion is installed.
 
 The other patches the companion installs are infrastructure for upcoming app features and don't change anything visible today.
 
